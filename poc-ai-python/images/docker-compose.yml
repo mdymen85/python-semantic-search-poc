@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: ankane/pgvector:latest
+    container_name: my-pgvector-compose-db
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password # Change this!
+    ports:
+      - "5432:5432"
+    volumes:
+      # This line mounts your script into the container
+      - ./init-scripts:/docker-entrypoint-initdb.d
+
+      # This line still persists the actual database data
+      - pgvector_data_compose:/var/lib/postgresql/data
+
+volumes:
+  pgvector_data_compose:

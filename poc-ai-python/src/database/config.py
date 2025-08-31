@@ -1,0 +1,7 @@
+MINCONN=10
+MAXCONN=30
+HOST="localhost"
+PORT="5432"
+DATABASE="mydb"
+USER="user"
+PASSWORD="password"
